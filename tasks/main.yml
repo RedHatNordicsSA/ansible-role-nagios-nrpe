@@ -2,7 +2,7 @@
 # tasks file for ansible-role-nagios-nrpe
 - name: Install NRPE packages
   yum:
-    name: {{ item }}
+    name: "{{ item }}""
     state: present
   with_items:
   - nrpe
@@ -20,13 +20,13 @@
     group: nagios
     mode: "u=rw,g=r,o=r"
  
- - name: Put NRPE command definitions in place
-   template:
-     src: templates/rhel-base.j2
-     dest: /etc/nrpe.d/rhel-base.cfg
-     owner: nagios
-     group: nagios
-     mode: "u=rw,g=r,o=r"
+- name: Put NRPE command definitions in place
+  template:
+    src: templates/rhel-base.j2
+    dest: /etc/nrpe.d/rhel-base.cfg
+    owner: nagios
+    group: nagios
+    mode: "u=rw,g=r,o=r"
      
 - name: Set firewall rule for NRPE daemon
   firewalld:
@@ -34,8 +34,8 @@
     permanent: true
     state: enabled
     
- - name: Start and enable NRPE
-   service:
-     name: nrpe
-     state: started
-     enabled: yes
+- name: Start and enable NRPE
+  service:
+    name: nrpe
+    state: started
+    enabled: yes
