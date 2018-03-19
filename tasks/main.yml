@@ -29,10 +29,10 @@
     mode: "u=rw,g=r,o=r"
      
 - name: Set firewall rule for NRPE daemon
-  firewalld:
-    port: 5666/tcp
-    permanent: true
-    state: enabled
+  command: firewall-cmd --zone=public --add-port=5666/tcp --permanent
+  
+- name: Reload firewall rules
+  command: firewall-cmd --reload
     
 - name: Start and enable NRPE
   service:
