@@ -1,6 +1,6 @@
 ---
 # tasks file for ansible-role-nagios-nrpe
-- name: Install NRPE packages
+- name: Install NRPE monitoring software packages
   yum:
     name: "{{ item }}"
     state: present
